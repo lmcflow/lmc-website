@@ -27,33 +27,31 @@
 
 ## Лид
 
-> Every brand we take on gets the same three things: someone senior on the
-> work from the first day, a plan you can see, and material you can use the
-> week it is made.
+> You work with a senior-led team, a written scope and clear review points
+> from the start.
 
 ## 01 · We start with what you already have
 
-> Before anything is designed, we look at what exists: the account, the
-> photographs, the site, the way people already talk about you. Most brands
-> arrive with more than they think, and some of it is working. The first thing
-> we hand back is an honest read of it.
+> Before anything is designed, we look at the account, the photographs, the
+> site and the way people already talk about you. We identify what is working,
+> what is useful and what needs attention. The first thing we hand back is an
+> honest read of it.
 
 ## 02 · The plan is written down
 
-> You get the scope in writing before the work starts: what is being made, what
-> it costs, and what we need from you and when. If something changes, the
-> document changes and you see it change.
+> Before the work starts, you get the scope in writing. It sets out what is
+> being made, what it costs, and what we need from you and when. If a change
+> affects the scope, fee or timing, we agree it with you before proceeding.
 
 ## 03 · You see the work while it is being made
 
-> Nothing is revealed at the end. Drafts come to you while they can still be
-> argued with, and we would rather hear the objection in week one than in week
-> six.
+> You see drafts at agreed stages, while there is still room to question them
+> and shape the work.
 
-## 04 · What we deliver, you own
+## 04 · A clear handover
 
-> Files, sources, accounts and access sit with you. Nothing we build needs us
-> in order to keep running.
+> The agreed deliverables and access come with a clear handover. Your scope
+> sets out ownership, licensing and any ongoing support.
 
 ---
 

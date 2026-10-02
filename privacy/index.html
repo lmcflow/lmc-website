@@ -377,9 +377,6 @@
     footer { padding: 48px 24px 32px; }
   }
 
-  .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--slate); }
-  .footer-links a { color: var(--slate); text-decoration: none; }
-  .footer-links a:hover { color: var(--ice); }
 
   /* focus (#1032) */
   .hamburger:focus-visible, .nav-link:focus-visible { outline: 2px solid var(--ice); outline-offset: 4px; }
@@ -481,7 +478,7 @@
       </g>
     </svg>
   </div>
-  <nav class="footer-links" aria-label="Legal"><a href="/privacy">Privacy</a><span aria-hidden="true">·</span><a href="/app">LMC Flow Analytics</a></nav>
+  <nav class="footer-links" aria-label="Information"><a href="/privacy">Privacy</a><span aria-hidden="true">·</span><a href="/app">LMC Flow Analytics</a></nav>
   <div class="footer-text">&copy; 2026 LMC FLOW &middot; Creative Agency</div>
 </footer>
 <script>
@@ -504,6 +501,15 @@
   mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false, false)));
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('active')) setMenu(false, true);
+  });
+  // Широкий экран (как в CSS: max-width 720px — телефон): меню скрыто — снять его состояние, фокус на видимый знак.
+  const phone = window.matchMedia('(max-width: 720px)');
+  phone.addEventListener('change', e => {
+    if (!e.matches && mobileMenu.classList.contains('active')) {
+      const inMenu = mobileMenu.contains(document.activeElement) || document.activeElement === hamburger;
+      setMenu(false, false);
+      if (inMenu) document.querySelector('.header-logo').focus();
+    }
   });
 </script>
 </body>

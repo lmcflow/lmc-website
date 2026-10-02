@@ -71,7 +71,7 @@ PAGE_CSS = """<style>
   @media (max-width: 720px) { .doc { padding: 120px 24px 72px; } .doc h1 { font-size: 1.9rem; } }
 </style>"""
 
-LINKS = '<nav class="footer-links" aria-label="Legal"><a href="/privacy">Privacy</a><span aria-hidden="true">·</span><a href="/app">LMC Flow Analytics</a></nav>'
+LINKS = '<nav class="footer-links" aria-label="Information"><a href="/privacy">Privacy</a><span aria-hidden="true">·</span><a href="/app">LMC Flow Analytics</a></nav>'
 def footer_with_links(f):
     f = re.sub(r'<nav class="footer-links".*?</nav>\n?\s*', "", f, flags=re.S)       # снять прежние — вставить один раз
     return f.replace('<div class="footer-text">', LINKS + '\n  <div class="footer-text">', 1)

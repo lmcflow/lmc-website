@@ -383,6 +383,13 @@
   .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--slate); }
   .footer-links a { color: var(--slate); text-decoration: none; }
   .footer-links a:hover { color: var(--ice); }
+
+  /* focus (#1032) */
+  .hamburger:focus-visible, .nav-link:focus-visible { outline: 2px solid var(--ice); outline-offset: 4px; }
+  /* footer-links (#1032) */
+  .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: rgba(238, 242, 246, 0.6); }
+  .footer-links a { color: rgba(238, 242, 246, 0.6); text-decoration: none; }
+  .footer-links a:hover, .footer-links a:focus-visible { color: var(--ice); }
 </style>
 </head>
 <body>
@@ -561,21 +568,25 @@
 </footer>
 
 <script>
+  // Меню телефона: открытие кнопкой, Escape закрывает и возвращает фокус, фон недоступен с клавиатуры (#1032, ревью codex-web).
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+  const behind = () => [...document.body.children].filter(el => el !== mobileMenu && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT');
+  function setMenu(open, returnFocus) {
+    hamburger.classList.toggle('active', open);
+    mobileMenu.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    behind().forEach(el => { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
+    if (open) { const first = mobileMenu.querySelector('a'); if (first) first.focus(); }
+    else if (returnFocus) hamburger.focus();
+  }
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-controls', 'mobileMenu');
+  hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('active'), true));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false, false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) setMenu(false, true);
   });
 </script>
 

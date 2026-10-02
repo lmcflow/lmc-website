@@ -376,11 +376,22 @@
     .services-subset { margin-top: 56px; }
     footer { padding: 48px 24px 32px; }
   }
+
+  .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--slate); }
+  .footer-links a { color: var(--slate); text-decoration: none; }
+  .footer-links a:hover { color: var(--ice); }
+
+  /* focus (#1032) */
+  .hamburger:focus-visible, .nav-link:focus-visible { outline: 2px solid var(--ice); outline-offset: 4px; }
+  /* footer-links (#1032) */
+  .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: rgba(238, 242, 246, 0.6); }
+  .footer-links a { color: rgba(238, 242, 246, 0.6); text-decoration: none; }
+  .footer-links a:hover, .footer-links a:focus-visible { color: var(--ice); }
 </style>
 <style>
   .doc { max-width: 720px; margin: 0 auto; padding: 152px 48px 96px; color: var(--ice); }
   .doc h1 { font-size: 2.4rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 12px; }
-  .doc .effective { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--slate); margin: 0 0 40px; }
+  .doc .effective { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(238, 242, 246, 0.6); margin: 0 0 40px; }
   .doc h2 { font-size: 1.15rem; font-weight: 600; margin: 44px 0 12px; }
   .doc h3 { font-size: 1rem; font-weight: 600; margin: 28px 0 8px; }
   .doc p, .doc li { font-size: 1rem; line-height: 1.7; color: rgba(238, 242, 246, 0.82); }
@@ -390,11 +401,6 @@
   .doc a { color: var(--ice); text-decoration: underline; text-underline-offset: 3px; }
   .doc strong { color: var(--ice); font-weight: 600; }
   @media (max-width: 720px) { .doc { padding: 120px 24px 72px; } .doc h1 { font-size: 1.9rem; } }
-</style>
-<style>
-  .footer-links { display: flex; gap: 12px; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--slate); }
-  .footer-links a { color: var(--slate); text-decoration: none; }
-  .footer-links a:hover { color: var(--ice); }
 </style>
 </head>
 <body>
@@ -479,21 +485,25 @@
   <div class="footer-text">&copy; 2026 LMC FLOW &middot; Creative Agency</div>
 </footer>
 <script>
+  // Меню телефона: открытие кнопкой, Escape закрывает и возвращает фокус, фон недоступен с клавиатуры (#1032, ревью codex-web).
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+  const behind = () => [...document.body.children].filter(el => el !== mobileMenu && el.tagName !== 'HEADER' && el.tagName !== 'SCRIPT');
+  function setMenu(open, returnFocus) {
+    hamburger.classList.toggle('active', open);
+    mobileMenu.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    behind().forEach(el => { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
+    if (open) { const first = mobileMenu.querySelector('a'); if (first) first.focus(); }
+    else if (returnFocus) hamburger.focus();
+  }
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-controls', 'mobileMenu');
+  hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('active'), true));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false, false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) setMenu(false, true);
   });
 </script>
 </body>

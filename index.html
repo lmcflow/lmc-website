@@ -19,6 +19,8 @@
     --slate: #6B778C;
     --ocean: #2B7A96;
     --marsala: #955251;
+    --body: #2E3542;
+    --ice-muted: rgba(238, 242, 246, 0.62);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,7 +74,7 @@
     opacity: 0.7;
     transition: opacity 0.2s;
   }
-  .nav-link:hover { opacity: 1; color: var(--ocean); }
+  .nav-link:hover { opacity: 1; text-decoration: underline; text-decoration-color: var(--ocean); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 
   .hamburger {
     display: none;
@@ -141,7 +143,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: var(--ocean);
+    color: var(--ice-muted);
     margin-bottom: 24px;
   }
 
@@ -187,13 +189,13 @@
     font-weight: 400;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--slate);
+    color: var(--ice-muted);
   }
   .hero-dot { color: var(--ocean); }
 
   /* ===== WHO WE ARE ===== */
   .who { background: var(--ice); color: var(--ink); }
-  .who .overline { color: var(--ocean); }
+  .who .overline { color: var(--body); }
   .who-text {
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     font-weight: 400;
@@ -211,9 +213,8 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: var(--ocean);
+    color: var(--ice-muted);
     margin-bottom: 24px;
-    opacity: 0.8;
   }
   .services-grid {
     display: grid;
@@ -239,7 +240,7 @@
     background: var(--ocean);
     color: var(--ice);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 19px;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
@@ -251,7 +252,7 @@
   .service-card p {
     font-size: 0.92rem;
     line-height: 1.55;
-    color: var(--slate);
+    color: var(--ice-muted);
   }
 
   /* ===== CONTACT ===== */
@@ -266,7 +267,7 @@
   .contact-dot { color: var(--ocean); }
   .contact-subtitle {
     font-size: 1.1rem;
-    color: var(--slate);
+    color: var(--body);
     margin-bottom: 64px;
     max-width: 560px;
     margin-left: auto;
@@ -302,7 +303,7 @@
     background: var(--ocean);
     color: var(--ice);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 19px;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
@@ -359,9 +360,8 @@
   .footer-wordmark svg { width: 100%; height: auto; display: block; }
   .footer-text {
     font-size: 0.75rem;
-    color: var(--slate);
+    color: var(--ice-muted);
     letter-spacing: 1.5px;
-    opacity: 0.7;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -422,10 +422,11 @@
 <!-- ============================================ -->
 <!-- HERO -->
 <!-- ============================================ -->
+<main>
 <section class="hero" id="top">
   <div class="section-inner">
     <!-- LMC FLOW Wordmark SVG -->
-    <svg class="wordmark" viewBox="0 0 97.85 14.15" xmlns="http://www.w3.org/2000/svg" aria-label="LMC Flow">
+    <h1><svg class="wordmark" viewBox="0 0 97.85 14.15" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LMC Flow">
       <g>
         <path fill="#EEF2F6" d="M0,.18h1.97v12h6.21v1.8H0V.18Z"/>
         <path fill="#EEF2F6" d="M20.88.18h1.85v13.79h-1.98V3.24l-4.24,5.33h-.37l-4.29-5.33v10.73h-1.97V.18h1.87l4.58,5.67L20.88.18Z"/>
@@ -435,7 +436,7 @@
         <path fill="#EEF2F6" d="M69.45,0c2.04,0,3.77.69,5.19,2.06,1.42,1.37,2.13,3.05,2.13,5.02s-.71,3.64-2.13,5.01c-1.42,1.37-3.15,2.06-5.19,2.06s-3.76-.69-5.17-2.06c-1.41-1.37-2.12-3.04-2.12-5.01s.71-3.65,2.12-5.02c1.41-1.37,3.13-2.06,5.17-2.06ZM69.49,13.16c1.72,0,3.17-.59,4.35-1.76,1.18-1.17,1.77-2.61,1.77-4.32s-.59-3.16-1.77-4.33c-1.18-1.17-2.63-1.76-4.35-1.76s-3.18.59-4.38,1.76c-1.19,1.17-1.79,2.62-1.79,4.33s.6,3.14,1.79,4.32c1.2,1.18,2.66,1.76,4.38,1.76Z"/>
         <path fill="#EEF2F6" d="M87.41,2.47l-4.62,11.64h-.29L76.95.18h1.09l4.57,11.44L87.24.18h.33l4.61,11.44L96.76.18h1.09l-5.56,13.93h-.26l-4.62-11.64Z"/>
       </g>
-    </svg>
+    </svg></h1>
 
     <p class="hero-tagline">
       Brand. Web. Social<span class="hero-dot">.</span>
@@ -458,8 +459,8 @@
     <p class="who-text" style="font-size: 1.05rem; opacity: 0.75;">
       Our workflow is built on AI&#8209;augmented production&nbsp;&mdash; combining senior expertise with the speed of modern technology from start to finish.
     </p>
-    <p class="who-text" style="font-size: 0.95rem; opacity: 0.6; margin-top: 32px;">
-      Founded by <a href="https://jimmyheneidy.com" target="_blank" rel="noopener" style="color: var(--ocean); border-bottom: 1px solid currentColor; padding-bottom: 1px;">Jimmy Heneidy</a>.
+    <p class="who-text" style="font-size: 0.95rem; color: var(--body); margin-top: 32px;">
+      Founded by <a href="https://jimmyheneidy.com" target="_blank" rel="noopener" style="color: var(--ink); border-bottom: 1px solid var(--ocean); padding-bottom: 1px;">Jimmy Heneidy</a>.
     </p>
   </div>
 </section>
@@ -479,17 +480,17 @@
       <div class="subset-heading">Brand &amp; Web</div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="card-icon">Id</div>
+          <div class="card-icon" aria-hidden="true">Id</div>
           <h3>Identity</h3>
           <p>Positioning, logo, colors, typography, and guidelines. The foundation of how your brand looks and sounds.</p>
         </div>
         <div class="service-card">
-          <div class="card-icon">Dv</div>
+          <div class="card-icon" aria-hidden="true">Dv</div>
           <h3>Development</h3>
           <p>Websites built on the right platform&nbsp;&mdash; Shopify, WordPress, or custom. UI/UX, development, and launch.</p>
         </div>
         <div class="service-card">
-          <div class="card-icon">Se</div>
+          <div class="card-icon" aria-hidden="true">Se</div>
           <h3>SEO &amp; Analytics</h3>
           <p>Google stack set up and connected. Search visibility, analytics, and reporting dashboards.</p>
         </div>
@@ -500,17 +501,17 @@
       <div class="subset-heading">Social Media</div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="card-icon">St</div>
+          <div class="card-icon" aria-hidden="true">St</div>
           <h3>Strategy</h3>
           <p>Positioning, messaging, and content planning. The thinking behind everything that goes out.</p>
         </div>
         <div class="service-card">
-          <div class="card-icon">Cn</div>
+          <div class="card-icon" aria-hidden="true">Cn</div>
           <h3>Content</h3>
           <p>Photography, video, and short&#8209;form content that captures your brand authentically.</p>
         </div>
         <div class="service-card">
-          <div class="card-icon">Mg</div>
+          <div class="card-icon" aria-hidden="true">Mg</div>
           <h3>Management</h3>
           <p>Planning, posting, and community management&nbsp;&mdash; a presence that grows reach and delivers measurable results.</p>
         </div>
@@ -529,13 +530,13 @@
 
     <div class="contact-cards">
       <a class="contact-card" href="mailto:info@lmcflow.com">
-        <div class="card-icon">@</div>
+        <div class="card-icon" aria-hidden="true">@</div>
         <div class="contact-card-label">Email</div>
         <div class="contact-card-value">info@lmcflow.com</div>
         <div class="contact-card-action">Send a message</div>
       </a>
       <a class="contact-card" href="https://instagram.com/lmcflow" target="_blank" rel="noopener">
-        <div class="card-icon">Ig</div>
+        <div class="card-icon" aria-hidden="true">Ig</div>
         <div class="contact-card-label">Instagram</div>
         <div class="contact-card-value">@lmcflow</div>
         <div class="contact-card-action">Follow us</div>
@@ -543,9 +544,10 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <div class="footer-wordmark" aria-label="LMC Flow">
+  <div class="footer-wordmark" role="img" aria-label="LMC Flow">
     <svg viewBox="0 0 97.85 14.15" xmlns="http://www.w3.org/2000/svg">
       <g>
         <path fill="#EEF2F6" d="M0,.18h1.97v12h6.21v1.8H0V.18Z"/>
